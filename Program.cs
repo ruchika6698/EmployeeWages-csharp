@@ -28,8 +28,8 @@ namespace EmployeeWages
             
             foreach (var val in myArryList)
                 Console.WriteLine(val);
-            
-            Console.WriteLine(employeeMonthlyWage);
+
+            Console.WriteLine($"Total Monthly Wage : {employeeMonthlyWage}");
         }
     }
 
