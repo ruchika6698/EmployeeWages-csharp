@@ -10,7 +10,7 @@ namespace EmployeeWages
         public bool employeeAttendance()
             {
                 Random Number= new Random();
-                return Number.Next(0, 1) == PRESENT ? true : false;
+                return Number.Next(0, 2) == PRESENT ? true : false;
             }
 
         public int dailyEmployeeWages(int workingHours, int Wage)

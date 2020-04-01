@@ -11,6 +11,8 @@ namespace EmployeeWages
 
         private static bool isEmployeePresent;
         private static int wageForDay;
+        private static int workHours;
+        private static int empType;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wages Computation");
@@ -19,7 +21,21 @@ namespace EmployeeWages
             isEmployeePresent = emp.employeeAttendance();
             if( isEmployeePresent == true )
             {
-                wageForDay = emp.dailyEmployeeWages(FULL_TIME_HOUR, WAGE_PER_HOUR);
+                Random Number = new Random();
+                empType = Number.Next(0, 2);
+                switch (empType)
+                {
+                    case 1:
+                        workHours = FULL_TIME_HOUR;
+                        break;
+                    case 2:
+                        workHours = PART_TIME_HOUR;
+                        break;
+                    default:
+                        Console.WriteLine("Wrong choice!");
+                        break;
+                }
+                wageForDay = emp.dailyEmployeeWages(workHours, WAGE_PER_HOUR);
             }
             else
             {
