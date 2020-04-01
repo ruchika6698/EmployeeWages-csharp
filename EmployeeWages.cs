@@ -20,9 +20,15 @@ namespace EmployeeWages
         private static int empType;
         private int workinghrsForMonth = 0;
         private int days = 0;
+        private int FULL_TIME;
+        private int PART_TIME;
+        private int wAGE_PER_HOUR;
 
-        public EmployeeWages(int fULL_TIME, int pART_TIME, int wAGE_PER_HOUR)
+        public EmployeeWages(int FULL_TIME, int PART_TIME, int WAGE_PER_HOUR)
         {
+            this.FULL_TIME = FULL_TIME;
+            this.PART_TIME = PART_TIME;
+            this.wAGE_PER_HOUR = wAGE_PER_HOUR;
         }
 
         public bool employeeAttendance()
