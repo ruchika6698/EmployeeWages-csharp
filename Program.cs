@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace EmployeeWages
@@ -10,10 +11,12 @@ namespace EmployeeWages
         private static int WAGE_PER_HOUR = 20;
 
         private static int employeeMonthlyWage;
-        
+        private static object dailyEmployeeWages;
+
         static void Main(string[] args)
         {
-            IDictionary<int, string> dict = new Dictionary<int, string>();
+            ArrayList arryList1 = new ArrayList();
+            arryList1.Add(dailyEmployeeWages);
             Console.WriteLine("Welcome to Employee Wages Computation");
             EmployeeWages emp = new EmployeeWages(FULL_TIME, PART_TIME, WAGE_PER_HOUR);
             employeeMonthlyWage = emp.monthlyWage();
