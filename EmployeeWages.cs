@@ -12,11 +12,13 @@ namespace EmployeeWages
         public static int NO_WAGE = 0;
         private int PRESENT = 0;
         private int MONTHLY_DAYS = 20;
+        private int MONTHLY_WORKING_HOURS = 100;
 
         private static bool isEmployeePresent;
         private static int wageForDay;
         private static int workHours;
         private static int empType;
+        private int workinghrsForMonth = 0;
         public bool employeeAttendance()
             {
                 Random Number= new Random();
@@ -33,7 +35,7 @@ namespace EmployeeWages
         {
             int employeeMonthlyWage = 0;
             int daysWorkedInMonth = 0;
-            while (daysWorkedInMonth < MONTHLY_DAYS)
+            while (daysWorkedInMonth < MONTHLY_DAYS && workinghrsForMonth < MONTHLY_WORKING_HOURS)
             {
                 //Employee Present or Absent
                 isEmployeePresent = this.employeeAttendance();
@@ -53,8 +55,14 @@ namespace EmployeeWages
                             Console.WriteLine("Wrong choice!");
                             break;
                     }
+                    if((MONTHLY_WORKING_HOURS - workinghrsForMonth) < FULL_TIME_HOUR)
+                    {
+                        workHours = FULL_TIME_HOUR;
+                    }
                     //dailyWage
-                    wageForDay = emp.dailyEmployeeWages(workHours, WAGE_PER_HOUR);
+                    wageForDay = this.dailyEmployeeWages(workHours, WAGE_PER_HOUR);
+                    daysWorkedInMonth++;
+                    workinghrsForMonth += workHours;
                 }
                 else
                 {
@@ -62,8 +70,7 @@ namespace EmployeeWages
                 }
             }
             // Caclulating monthly wage
-            employeeMonthlyWage += wageForDay;  
-            daysWorkedInMonth++;
+            employeeMonthlyWage += wageForDay;
         }
             return employeeMonthlyWage;
 
