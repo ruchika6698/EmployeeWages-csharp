@@ -5,7 +5,8 @@ namespace EmployeeWages
     class Program
     {
         public static int WAGE_PER_HOUR = 20;
-        public static int FULL_DAY_HOUR = 8;
+        public static int FULL_TIME_HOUR = 8;
+        public static int PART_TIME_HOUR = 4;
         public static int NO_WAGE = 0;
 
         private static bool isEmployeePresent;
@@ -18,7 +19,7 @@ namespace EmployeeWages
             isEmployeePresent = emp.employeeAttendance();
             if( isEmployeePresent == true )
             {
-                wageForDay = emp.ailyEmployeeWages(FULL_DAY_HOUR, WAGE_PER_HOUR);
+                wageForDay = emp.dailyEmployeeWages(FULL_TIME_HOUR, WAGE_PER_HOUR);
             }
             else
             {
