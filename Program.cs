@@ -12,14 +12,23 @@ namespace EmployeeWages
 
         private static int employeeMonthlyWage;
         private static object dailyEmployeeWages;
+        private static object Day;
 
         static void Main(string[] args)
         {
-            ArrayList arryList1 = new ArrayList();
-            arryList1.Add(dailyEmployeeWages);
+            IList myArryList = new ArrayList();
+            myArryList.Add(dailyEmployeeWages);
+            myArryList.Add(Day);
+
             Console.WriteLine("Welcome to Employee Wages Computation");
-            EmployeeWages emp = new EmployeeWages(FULL_TIME, PART_TIME, WAGE_PER_HOUR);
-            employeeMonthlyWage = emp.monthlyWage();
+            EmployeeWages emp = new EmployeeWages(FULL_TIME,
+                                                  PART_TIME,
+                                                  WAGE_PER_HOUR);
+            employeeMonthlyWage = emp.MonthlyWage();
+            
+            foreach (var val in myArryList)
+                Console.WriteLine(val);
+            
             Console.WriteLine(employeeMonthlyWage);
         }
     }

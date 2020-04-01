@@ -21,8 +21,10 @@ namespace EmployeeWages
         private int workinghrsForMonth = 0;
         private int days = 0;
 
+        public EmployeeWages(int fULL_TIME, int pART_TIME, int wAGE_PER_HOUR)
+        {
+        }
 
-        
         public bool employeeAttendance()
         {
             Random Number= new Random();
@@ -57,7 +59,7 @@ namespace EmployeeWages
 
             return workHours;
         }
-        public int monthlyWage()
+        public int MonthlyWage()
         {
             int employeeMonthlyWage = 0;
             int daysWorkedInMonth = 0;
@@ -86,6 +88,5 @@ namespace EmployeeWages
             
         }
             return employeeMonthlyWage;
-        
     }
 }
