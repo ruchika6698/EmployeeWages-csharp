@@ -19,23 +19,49 @@ namespace EmployeeWages
         private static int workHours;
         private static int empType;
         private int workinghrsForMonth = 0;
+        private int days = 0;
+
+
+        
         public bool employeeAttendance()
-            {
-                Random Number= new Random();
-                return Number.Next(0, 2) == PRESENT ? true : false;
-            }
+        {
+            Random Number= new Random();
+            return Number.Next(0, 2) == PRESENT ? true : false;
+        }
 
         public int dailyEmployeeWages(int workingHours, int Wage)
         {
            return workingHours* Wage;
         }
 
+        public int workingHoursForDay(int workinghrsForMonth)
+        {
+            Random randomNum = new Random();
+            empType = randomNum.Next(0, 2);
+            switch (empType) 
+            {
+                case 0:
+                    workHours = FULL_TIME_HOUR;
+                    break;
+                case 1:
+                    workHours = PART_TIME_HOUR;
+                    break;
+                default:
+                    break;
+            }
 
+            if ((MONTHLY_WORKING_HOURS - workinghrsForMonth) < FULL_TIME_HOUR)
+            {
+                workHours = PART_TIME_HOUR;
+            }
+
+            return workHours;
+        }
         public int monthlyWage()
         {
             int employeeMonthlyWage = 0;
             int daysWorkedInMonth = 0;
-            while (daysWorkedInMonth < MONTHLY_DAYS && workinghrsForMonth < MONTHLY_WORKING_HOURS)
+            while (daysWorkedInMonth < MONTHLY_DAYS && workinghrsForMonth < MONTHLY_WORKING_HOURS && days <= 20)
             {
                 //Employee Present or Absent
                 isEmployeePresent = this.employeeAttendance();
@@ -43,22 +69,7 @@ namespace EmployeeWages
                 {
                     Random Number = new Random();
                     empType = Number.Next(0, 2);
-                    switch (empType)
-                    {
-                        case 1:
-                            workHours = FULL_TIME_HOUR;
-                            break;
-                        case 2:
-                            workHours = PART_TIME_HOUR;
-                            break;
-                        default:
-                            Console.WriteLine("Wrong choice!");
-                            break;
-                    }
-                    if((MONTHLY_WORKING_HOURS - workinghrsForMonth) < FULL_TIME_HOUR)
-                    {
-                        workHours = FULL_TIME_HOUR;
-                    }
+                    workHours = workingHoursForDay(workinghrsForMonth);
                     //dailyWage
                     wageForDay = this.dailyEmployeeWages(workHours, WAGE_PER_HOUR);
                     daysWorkedInMonth++;
@@ -68,11 +79,13 @@ namespace EmployeeWages
                 {
                     wageForDay = NO_WAGE;
                 }
+                days++;
+                // Caclulating monthly wage
+                employeeMonthlyWage += wageForDay;
             }
-            // Caclulating monthly wage
-            employeeMonthlyWage += wageForDay;
+            
         }
             return employeeMonthlyWage;
-
+        
     }
 }
