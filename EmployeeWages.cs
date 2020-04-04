@@ -6,13 +6,13 @@ namespace EmployeeWages
 {
     class EmployeeWages
     {
-        public static int WAGE_PER_HOUR = 20;
-        public static int FULL_TIME_HOUR = 8;
-        public static int PART_TIME_HOUR = 4;
-        public static int NO_WAGE = 0;
-        private int PRESENT = 0;
-        private int MONTHLY_DAYS = 20;
-        private int MONTHLY_WORKING_HOURS = 100;
+        public const int WAGE_PER_HOUR = 20;
+        public const int FULL_TIME_HOUR = 8;
+        public const int PART_TIME_HOUR = 4;
+        public const int NO_WAGE = 0;
+        private const int PRESENT = 0;
+        private const int MONTHLY_DAYS = 20;
+        private const int MONTHLY_WORKING_HOURS = 100;
 
         private static bool isEmployeePresent;
         private static int wageForDay;
@@ -34,7 +34,7 @@ namespace EmployeeWages
         public bool employeeAttendance()
         {
             Random Number= new Random();
-            return Number.Next(0, 2) == PRESENT ? true : false;
+            return Number.Next(0, 1) == PRESENT;
         }
 
         public int dailyEmployeeWages(int workingHours, int Wage)
@@ -45,7 +45,7 @@ namespace EmployeeWages
         public int workingHoursForDay(int workinghrsForMonth)
         {
             Random randomNum = new Random();
-            empType = randomNum.Next(0, 2);
+            empType = randomNum.Next(0, 1);
             switch (empType) 
             {
                 case 0:
@@ -91,9 +91,7 @@ namespace EmployeeWages
                 // Caclulating monthly wage
                 employeeMonthlyWage += wageForDay;
             }
-            
+            return employeeMonthlyWage;
         }
-        return employeeMonthlyWage;
     }
-
 }
