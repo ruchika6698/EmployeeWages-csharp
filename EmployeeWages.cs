@@ -6,6 +6,9 @@ namespace EmployeeWages
 {
     class EmployeeWages
     {
+        /// <summary>
+        /// constants Same for every Employee
+        /// </summary
         public const int WAGE_PER_HOUR = 20;
         public const int FULL_TIME_HOUR = 8;
         public const int PART_TIME_HOUR = 4;
@@ -14,6 +17,9 @@ namespace EmployeeWages
         private const int MONTHLY_DAYS = 20;
         private const int MONTHLY_WORKING_HOURS = 100;
 
+        /// <summary>
+        /// Variale declaration
+        /// </summary
         private static bool isEmployeePresent;
         private static int wageForDay;
         private static int workHours;
@@ -22,26 +28,38 @@ namespace EmployeeWages
         private int days = 0;
         private int FULL_TIME;
         private int PART_TIME;
-        private int wAGE_PER_HOUR;
+        private int WAGES_PER_HOUR;
 
-        public EmployeeWages(int FULL_TIME, int PART_TIME, int WAGE_PER_HOUR)
+        /// <summary>
+        /// Constructor 
+        /// </summary
+        public EmployeeWages(int FULL_TIME, int PART_TIME, int WAGES_PER_HOUR)
         {
             this.FULL_TIME = FULL_TIME;
             this.PART_TIME = PART_TIME;
-            this.wAGE_PER_HOUR = wAGE_PER_HOUR;
+            this.WAGES_PER_HOUR = WAGES_PER_HOUR;
         }
 
+        /// <summary>
+        /// Method to check Employee is present or absent
+        /// </summary
         public bool employeeAttendance()
         {
             Random Number= new Random();
             return Number.Next(0, 1) == PRESENT;
         }
 
+        /// <summary>
+        /// Method to check Daily employee Wages
+        /// </summary
         public int dailyEmployeeWages(int workingHours, int Wage)
         {
            return workingHours* Wage;
         }
 
+        /// <summary>
+        /// Method to check Working hours for day
+        /// </summary
         public int workingHoursForDay(int workinghrsForMonth)
         {
             Random randomNum = new Random();
@@ -55,6 +73,7 @@ namespace EmployeeWages
                     workHours = PART_TIME_HOUR;
                     break;
                 default:
+                    Console.WriteLine("Invalid Input");
                     break;
             }
 
@@ -62,24 +81,26 @@ namespace EmployeeWages
             {
                 workHours = PART_TIME_HOUR;
             }
-
             return workHours;
         }
-        public int MonthlyWage()
+
+        /// <summary>
+        /// Method to calculate Monthly wages
+        /// </summary
+        public int monthlyWage()
         {
             int employeeMonthlyWage = 0;
             int daysWorkedInMonth = 0;
             while (daysWorkedInMonth < MONTHLY_DAYS && workinghrsForMonth < MONTHLY_WORKING_HOURS && days <= 20)
             {
-                //Employee Present or Absent
-                isEmployeePresent = this.employeeAttendance();
+                
+                isEmployeePresent = this.employeeAttendance();          //Employee Present or Absent
                 if (isEmployeePresent == true)
                 {
                     Random Number = new Random();
                     empType = Number.Next(0, 2);
                     workHours = workingHoursForDay(workinghrsForMonth);
-                    //dailyWage
-                    wageForDay = this.dailyEmployeeWages(workHours, WAGE_PER_HOUR);
+                    wageForDay = this.dailyEmployeeWages(workHours, WAGE_PER_HOUR);   
                     daysWorkedInMonth++;
                     workinghrsForMonth += workHours;
                 }
@@ -88,7 +109,6 @@ namespace EmployeeWages
                     wageForDay = NO_WAGE;
                 }
                 days++;
-                // Caclulating monthly wage
                 employeeMonthlyWage += wageForDay;
             }
             return employeeMonthlyWage;
