@@ -8,7 +8,7 @@ namespace EmployeeWages
     {
         /// <summary>
         /// constants Same for every Employee
-        /// </summary
+        /// </summary>
         public const int WAGE_PER_HOUR = 20;
         public const int FULL_TIME_HOUR = 8;
         public const int PART_TIME_HOUR = 4;
@@ -19,7 +19,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Variale declaration
-        /// </summary
+        /// </summary>
         private static bool isEmployeePresent;
         private static int wageForDay;
         private static int workHours;
@@ -32,7 +32,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Constructor 
-        /// </summary
+        /// </summary>
         public EmployeeWages(int FULL_TIME, int PART_TIME, int WAGES_PER_HOUR)
         {
             this.FULL_TIME = FULL_TIME;
@@ -42,7 +42,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Method to check Employee is present or absent
-        /// </summary
+        /// </summary>
         public bool employeeAttendance()
         {
             Random Number= new Random();
@@ -51,7 +51,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Method to check Daily employee Wages
-        /// </summary
+        ///</summary>
         public int dailyEmployeeWages(int workingHours, int Wage)
         {
            return workingHours* Wage;
@@ -59,7 +59,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Method to check Working hours for day
-        /// </summary
+        /// </summary>
         public int workingHoursForDay(int workinghrsForMonth)
         {
             Random randomNum = new Random();
@@ -86,7 +86,7 @@ namespace EmployeeWages
 
         /// <summary>
         /// Method to calculate Monthly wages
-        /// </summary
+        /// </summary>
         public int monthlyWage()
         {
             int employeeMonthlyWage = 0;
